@@ -1,0 +1,10 @@
+services:
+    BoShurik\Mapper\MapperInterface: '@BoShurik\Mapper\Mapper'
+
+    BoShurik\Mapper\Mapper:
+        public: false
+        arguments:
+            - '@BoShurik\Mapper\Mapping\MappingRegistry'
+
+    BoShurik\Mapper\Mapping\MappingRegistry:
+        public: false
