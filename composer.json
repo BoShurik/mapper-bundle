@@ -1,0 +1,30 @@
+{
+    "name": "boshurik/mapper-bundle",
+    "description": "Mapper bundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "BoShurik",
+            "email": "boshurik@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "boshurik/mapper": "^0.1",
+        "symfony/framework-bundle": "^4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "BoShurik\\MapperBundle\\": "src/"
+        }
+    },
+    "autoload-dev":  {
+        "psr-4": {
+            "BoShurik\\MapperBundle\\Tests\\": "tests/"
+        }
+    }
+}
