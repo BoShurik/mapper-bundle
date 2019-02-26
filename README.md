@@ -1,4 +1,4 @@
-# MapperBundle
+# MapperBundle  [![Build Status](https://travis-ci.com/BoShurik/mapper-bundle.svg?branch=master)](https://travis-ci.com/BoShurik/mapper-bundle)
 
 Integrates [boshurik/mapper](https://github.com/BoShurik/mapper) to Symfony
 
