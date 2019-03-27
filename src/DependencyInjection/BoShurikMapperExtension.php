@@ -32,4 +32,12 @@ class BoShurikMapperExtension extends Extension
             ->addTag(MappingPass::TAG)
         ;
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function getAlias()
+    {
+        return 'boshurik';
+    }
 }
