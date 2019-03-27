@@ -7,6 +7,7 @@
 
 namespace BoShurik\MapperBundle;
 
+use BoShurik\MapperBundle\DependencyInjection\BoShurikMapperExtension;
 use BoShurik\MapperBundle\DependencyInjection\Compiler\MappingPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -21,5 +22,17 @@ class BoShurikMapperBundle extends Bundle
         parent::build($container);
 
         $container->addCompilerPass(new MappingPass());
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getContainerExtension()
+    {
+        if (null === $this->extension) {
+            $this->extension = new BoShurikMapperExtension();
+        }
+
+        return $this->extension;
     }
 }
