@@ -38,6 +38,6 @@ class BoShurikMapperExtension extends Extension
      */
     public function getAlias()
     {
-        return 'boshurik';
+        return 'boshurik_mapper';
     }
 }

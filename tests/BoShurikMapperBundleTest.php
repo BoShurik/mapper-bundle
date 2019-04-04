@@ -17,6 +17,8 @@ class BoShurikMapperBundleTest extends TestCase
     {
         $bundle = new BoShurikMapperBundle();
 
-        $this->assertInstanceOf(ExtensionInterface::class, $bundle->getContainerExtension());
+        $extension = $bundle->getContainerExtension();
+        $this->assertInstanceOf(ExtensionInterface::class, $extension);
+        $this->assertSame('boshurik_mapper', $extension->getAlias());
     }
 }
