@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": "^7.2",
-        "boshurik/mapper": "^0.1",
+        "boshurik/mapper": "^0.2",
         "symfony/framework-bundle": "^4.0"
     },
     "require-dev": {
