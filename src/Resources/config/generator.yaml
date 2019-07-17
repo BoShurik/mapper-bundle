@@ -1,0 +1,43 @@
+services:
+    BoShurik\MapperBundle\Generator\MappingGenerator: ~
+    BoShurik\MapperBundle\Generator\ModelGenerator: ~
+
+    BoShurik\MapperBundle\Generator\Helper\ClassMapResolver:
+        arguments:
+            - '%kernel.project_dir%'
+
+    BoShurik\MapperBundle\Generator\Helper\ClassPathResolverFactory:
+        arguments:
+            - '@BoShurik\MapperBundle\Generator\Helper\ClassMapResolver'
+            - '%kernel.project_dir%'
+
+    BoShurik\MapperBundle\Generator\Helper\ClassAutoCompleterFactory:
+        arguments:
+            - '@BoShurik\MapperBundle\Generator\Helper\ClassMapResolver'
+            - '%kernel.project_dir%'
+
+    BoShurik\MapperBundle\Generator\Helper\ClassQuestionFactory:
+        arguments:
+            - '@BoShurik\MapperBundle\Generator\Helper\ClassAutoCompleter'
+
+    BoShurik\MapperBundle\Generator\Helper\ClassPathResolver:
+        factory: ['@BoShurik\MapperBundle\Generator\Helper\ClassPathResolverFactory', 'create']
+
+    BoShurik\MapperBundle\Generator\Helper\ClassAutoCompleter:
+        factory: ['@BoShurik\MapperBundle\Generator\Helper\ClassAutoCompleterFactory', 'create']
+
+    BoShurik\MapperBundle\Generator\Command\GenerateMappingCommand:
+        arguments:
+            - '@BoShurik\MapperBundle\Generator\MappingGenerator'
+            - '@BoShurik\MapperBundle\Generator\Helper\ClassPathResolver'
+            - '@BoShurik\MapperBundle\Generator\Helper\ClassQuestionFactory'
+        tags:
+            - { name: console.command }
+
+    BoShurik\MapperBundle\Generator\Command\GenerateModelCommand:
+        arguments:
+            - '@BoShurik\MapperBundle\Generator\ModelGenerator'
+            - '@BoShurik\MapperBundle\Generator\Helper\ClassPathResolver'
+            - '@BoShurik\MapperBundle\Generator\Helper\ClassQuestionFactory'
+        tags:
+            - { name: console.command }

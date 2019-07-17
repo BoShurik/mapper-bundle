@@ -11,11 +11,19 @@
     ],
     "require": {
         "php": "^7.2",
+        "ext-json": "*",
         "boshurik/mapper": "^0.2",
         "symfony/framework-bundle": "^4.0"
     },
     "require-dev": {
+        "nikic/php-parser": "^4.2",
+        "symfony/console": "^4.0",
         "phpunit/phpunit": "^8.0"
+    },
+    "suggest": {
+        "ext-json": "For code (models and mappings) generation",
+        "symfony/console": "For code (models and mappings) generation",
+        "nikic/php-parser": "For code (models and mappings) generation"
     },
     "autoload": {
         "psr-4": {
