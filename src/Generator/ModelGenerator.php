@@ -13,7 +13,7 @@ use PhpParser\Node\Stmt;
 
 class ModelGenerator extends AbstractGenerator
 {
-    public function generate(string $name, string $class): string
+    public function generate(string $name, string $class, bool $constraints = true): string
     {
         $className = new Name($name);
 
@@ -27,7 +27,7 @@ class ModelGenerator extends AbstractGenerator
         foreach ($reflectionProperties as $reflectionProperty) {
             $properties[] = new Stmt\Property(Stmt\Class_::MODIFIER_PUBLIC, [new Stmt\PropertyProperty($reflectionProperty->getName())], [
                 'comments' => [
-                    new Doc($this->getDocBlock('string')), // TODO: Guess type
+                    new Doc($this->getDocBlock('string', $constraints)), // TODO: Guess type
                 ]
             ]);
         }
@@ -38,6 +38,12 @@ class ModelGenerator extends AbstractGenerator
             new Stmt\Namespace_($className->slice(0, -1)),
         ];
 
+        if ($constraints) {
+            $statements = array_merge($statements, $this->createUseStatements([
+                'Assert' => new Name('Symfony\Component\Validator\Constraints'),
+            ]));
+        }
+
         $statements[] = new Stmt\Class_($className->getLast(), [
             'flags' => Stmt\Class_::MODIFIER_FINAL,
             'stmts' => $stmts,
@@ -46,11 +52,17 @@ class ModelGenerator extends AbstractGenerator
         return $this->compile($statements);
     }
 
-    private function getDocBlock($type)
+    private function getDocBlock(string $type, bool $addConstraint)
     {
+        if ($addConstraint) {
+            $constraint = "\n     *\n     * @Assert\NotBlank()\n";
+        } else {
+            $constraint = '';
+        }
+
         return <<< DOC
 /**
-     * @var $type|null
+     * @var $type|null$constraint
      */
 DOC;
     }

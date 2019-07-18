@@ -13,6 +13,7 @@ use BoShurik\MapperBundle\Generator\ModelGenerator;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class GenerateModelCommand extends AbstractCommand
 {
@@ -75,7 +76,8 @@ class GenerateModelCommand extends AbstractCommand
             $this->pathResolver->resolve($input->getArgument('name')),
             $this->generator->generate(
                 $input->getArgument('name'),
-                $input->getArgument('class')
+                $input->getArgument('class'),
+                interface_exists(ValidatorInterface::class)
             )
         );
     }

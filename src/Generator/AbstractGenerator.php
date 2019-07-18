@@ -8,6 +8,7 @@
 namespace BoShurik\MapperBundle\Generator;
 
 use BoShurik\MapperBundle\Generator\PhpParser\PrettyPrinter\PrettyPrinter;
+use PhpParser\Node\Identifier;
 use PhpParser\Node\Stmt;
 
 abstract class AbstractGenerator
@@ -29,12 +30,16 @@ abstract class AbstractGenerator
 
     protected function createUseStatements(array $classes): array
     {
-        sort($classes);
+        asort($classes);
 
         $uses = [];
-        foreach ($classes as $class) {
+        foreach ($classes as $key => $class) {
+            $alias = null;
+            if (is_string($key)) {
+                $alias = new Identifier($key);
+            }
             $uses[] = new Stmt\Use_([
-                new Stmt\UseUse($class),
+                new Stmt\UseUse($class, $alias),
             ]);
         }
 
