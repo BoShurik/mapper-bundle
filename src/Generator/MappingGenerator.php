@@ -93,26 +93,24 @@ class MappingGenerator extends AbstractGenerator
             ]);
         }
 
-        return $this->compile([
+        $statements = [
             new Stmt\Namespace_($className->slice(0, -1)),
-            new Stmt\Use_([
-                new Stmt\UseUse($sourceClassName),
-            ]),
-            new Stmt\Use_([
-                new Stmt\UseUse($destinationClassName),
-            ]),
-            new Stmt\Use_([
-                new Stmt\UseUse($this->mapperClassName),
-            ]),
-            new Stmt\Use_([
-                new Stmt\UseUse($interfaceClassName),
-            ]),
-            new Stmt\Class_($className->getLast(), [
-                'flags' => Stmt\Class_::MODIFIER_FINAL,
-                'implements' => [new Name($interfaceClassName->getLast())],
-                'stmts' => $classStmts,
-            ]),
+        ];
+
+        $statements = array_merge($statements, $this->createUseStatements([
+            $sourceClassName,
+            $destinationClassName,
+            $this->mapperClassName,
+            $interfaceClassName,
+        ]));
+
+        $statements[] =  new Stmt\Class_($className->getLast(), [
+            'flags' => Stmt\Class_::MODIFIER_FINAL,
+            'implements' => [new Name($interfaceClassName->getLast())],
+            'stmts' => $classStmts,
         ]);
+
+        return $this->compile($statements);
     }
 
     private function getMethodStatements(Name $source, Name $destination): array

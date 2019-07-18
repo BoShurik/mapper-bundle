@@ -8,6 +8,7 @@
 namespace BoShurik\MapperBundle\Generator;
 
 use BoShurik\MapperBundle\Generator\PhpParser\PrettyPrinter\PrettyPrinter;
+use PhpParser\Node\Stmt;
 
 abstract class AbstractGenerator
 {
@@ -24,5 +25,19 @@ abstract class AbstractGenerator
     protected function compile(array $stmts): string
     {
         return "<?php\n\n" . $this->printer->prettyPrint($stmts);
+    }
+
+    protected function createUseStatements(array $classes): array
+    {
+        sort($classes);
+
+        $uses = [];
+        foreach ($classes as $class) {
+            $uses[] = new Stmt\Use_([
+                new Stmt\UseUse($class),
+            ]);
+        }
+
+        return $uses;
     }
 }

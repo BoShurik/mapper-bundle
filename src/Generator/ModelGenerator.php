@@ -34,13 +34,16 @@ class ModelGenerator extends AbstractGenerator
 
         $stmts = array_merge($stmts, $properties);
 
-        return $this->compile([
+        $statements = [
             new Stmt\Namespace_($className->slice(0, -1)),
-            new Stmt\Class_($className->getLast(), [
-                'flags' => Stmt\Class_::MODIFIER_FINAL,
-                'stmts' => $stmts,
-            ]),
+        ];
+
+        $statements[] = new Stmt\Class_($className->getLast(), [
+            'flags' => Stmt\Class_::MODIFIER_FINAL,
+            'stmts' => $stmts,
         ]);
+
+        return $this->compile($statements);
     }
 
     private function getDocBlock($type)

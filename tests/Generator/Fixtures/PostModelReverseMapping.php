@@ -2,10 +2,10 @@
 
 namespace BoShurik\MapperBundle\Tests\Generator\Fixtures;
 
-use BoShurik\MapperBundle\Tests\Generator\Fixtures\PostModel;
-use BoShurik\MapperBundle\Tests\Generator\Fixtures\Post;
 use BoShurik\Mapper\MapperInterface;
 use BoShurik\MapperBundle\Mapper\Mapping\ReverseMappingInterface;
+use BoShurik\MapperBundle\Tests\Generator\Fixtures\Post;
+use BoShurik\MapperBundle\Tests\Generator\Fixtures\PostModel;
 
 final class PostModelReverseMapping implements ReverseMappingInterface
 {
