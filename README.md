@@ -15,19 +15,19 @@ for one-way and two-way mappings respectively
 
 ## Code generation
 
-Code generation base on [PHP-Parser](https://github.com/nikic/PHP-Parser)
+Code generation based on [PHP-Parser](https://github.com/nikic/PHP-Parser)
 
 ```bash
 composer require nikic/php-parser
 ```
 
-### Generate model
+### Generating model
 
 ```bash
 bin/console mapper:generate:model
 ```
 
-### Generate mapping
+### Generating mapping
 
 ```bash
 bin/console mapper:generate:mapping
