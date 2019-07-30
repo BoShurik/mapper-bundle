@@ -26,4 +26,14 @@ class AbstractCommand extends Command
     {
         $this->io = new SymfonyStyle($input, $output);
     }
+
+    protected function save(string $path, string $content)
+    {
+        $dir = pathinfo($path, PATHINFO_DIRNAME);
+        if (!is_dir($dir)) {
+            mkdir($dir, 0755, true);
+        }
+
+        file_put_contents($path, $content);
+    }
 }

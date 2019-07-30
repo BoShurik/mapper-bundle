@@ -72,7 +72,7 @@ class GenerateModelCommand extends AbstractCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        file_put_contents(
+        $this->save(
             $this->pathResolver->resolve($input->getArgument('name')),
             $this->generator->generate(
                 $input->getArgument('name'),
