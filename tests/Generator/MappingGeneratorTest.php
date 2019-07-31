@@ -12,6 +12,8 @@ use BoShurik\MapperBundle\Tests\Generator\Fixtures\Post;
 use BoShurik\MapperBundle\Tests\Generator\Fixtures\PostModel;
 use BoShurik\MapperBundle\Tests\Generator\Fixtures\PostModelMapping;
 use BoShurik\MapperBundle\Tests\Generator\Fixtures\PostModelReverseMapping;
+use BoShurik\MapperBundle\Tests\Generator\Fixtures\SimplePostModel;
+use BoShurik\MapperBundle\Tests\Generator\Fixtures\SimplePostModelMapping;
 use PHPUnit\Framework\TestCase;
 
 class MappingGeneratorTest extends TestCase
@@ -32,5 +34,14 @@ class MappingGeneratorTest extends TestCase
         $expected = file_get_contents(__DIR__ . '/Fixtures/PostModelReverseMapping.php');
 
         $this->assertEquals($expected, $generator->generate(PostModelReverseMapping::class, PostModel::class, Post::class, true));
+    }
+
+    public function testGenerateSimple()
+    {
+        $generator = new MappingGenerator();
+
+        $expected = file_get_contents(__DIR__ . '/Fixtures/SimplePostModelMapping.php');
+
+        $this->assertEquals($expected, $generator->generate(SimplePostModelMapping::class, SimplePostModel::class, Post::class, true));
     }
 }

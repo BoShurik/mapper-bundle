@@ -3,18 +3,18 @@
 namespace BoShurik\MapperBundle\Tests\Generator\Fixtures;
 
 use BoShurik\Mapper\MapperInterface;
-use BoShurik\MapperBundle\Mapper\Mapping\MappingInterface;
+use BoShurik\MapperBundle\Mapper\Mapping\ReverseMappingInterface;
 use BoShurik\MapperBundle\Tests\Generator\Fixtures\Post;
-use BoShurik\MapperBundle\Tests\Generator\Fixtures\PostModel;
+use BoShurik\MapperBundle\Tests\Generator\Fixtures\SimplePostModel;
 
-final class PostModelMapping implements MappingInterface
+final class SimplePostModelMapping implements ReverseMappingInterface
 {
     /**
      * @inheritDoc
      */
     public static function getSource(): string
     {
-        return PostModel::class;
+        return SimplePostModel::class;
     }
 
     /**
@@ -26,7 +26,7 @@ final class PostModelMapping implements MappingInterface
     }
 
     /**
-     * @param PostModel|object $source
+     * @param SimplePostModel|object $source
      * @param MapperInterface $mapper
      * @param array $context
      * @return Post|object
@@ -39,7 +39,21 @@ final class PostModelMapping implements MappingInterface
         } else {
             $destination->setName($source->name);
         }
-        $destination->setContent($source->content);
+
+        return $destination;
+    }
+
+    /**
+     * @param Post|object $source
+     * @param MapperInterface $mapper
+     * @param array $context
+     * @return SimplePostModel|object
+     */
+    public function reverseMap(object $source, MapperInterface $mapper, array $context): object
+    {
+        $destination = new SimplePostModel();
+        $destination->id = $source->getId();
+        $destination->name = $source->getName();
 
         return $destination;
     }

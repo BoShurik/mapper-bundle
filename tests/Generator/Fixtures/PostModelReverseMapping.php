@@ -39,6 +39,7 @@ final class PostModelReverseMapping implements ReverseMappingInterface
         } else {
             $destination->setName($source->name);
         }
+        $destination->setContent($source->content);
 
         return $destination;
     }
@@ -54,6 +55,7 @@ final class PostModelReverseMapping implements ReverseMappingInterface
         $destination = new PostModel();
         $destination->id = $source->getId();
         $destination->name = $source->getName();
+        $destination->content = $source->getContent();
 
         return $destination;
     }

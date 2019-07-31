@@ -14,6 +14,11 @@ class Post
      */
     private $name;
 
+    /**
+     * @var string
+     */
+    private $content;
+
     public function __construct(string $name)
     {
         $this->id = uniqid();
@@ -42,5 +47,21 @@ class Post
     public function setName(string $name): void
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContent(): string
+    {
+        return $this->content;
+    }
+
+    /**
+     * @param string $content
+     */
+    public function setContent(string $content): void
+    {
+        $this->content = $content;
     }
 }

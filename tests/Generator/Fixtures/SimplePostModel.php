@@ -1,10 +1,13 @@
 <?php
+/**
+ * User: boshurik
+ * Date: 2019-07-31
+ * Time: 15:00
+ */
 
 namespace BoShurik\MapperBundle\Tests\Generator\Fixtures;
 
-use Symfony\Component\Validator\Constraints as Assert;
-
-final class PostModel
+final class SimplePostModel
 {
     /**
      * @var string|null
@@ -19,12 +22,4 @@ final class PostModel
      * @Assert\NotBlank()
      */
     public $name;
-
-    /**
-     * @var string|null
-     *
-     * @Assert\NotBlank()
-     */
-    public $content;
-
 }

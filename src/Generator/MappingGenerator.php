@@ -193,6 +193,9 @@ class MappingGenerator extends AbstractGenerator
                 if (!$setter = $this->getSetterForProperty($destinationReflectionClass, $destinationReflectionProperty->getName())) {
                     continue;
                 }
+                if (!$sourceReflectionClass->hasProperty($destinationReflectionProperty->getName())) {
+                    continue;
+                }
                 $statements[] = new Stmt\Expression(new Expr\MethodCall(
                     new Expr\Variable('destination'), $setter, [
                         new Arg(new Expr\PropertyFetch(new Expr\Variable('source'), $sourceReflectionClass->getProperty($destinationReflectionProperty->getName())->getName()))
