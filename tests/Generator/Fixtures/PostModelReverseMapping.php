@@ -7,7 +7,7 @@ use BoShurik\MapperBundle\Mapper\Mapping\ReverseMappingInterface;
 use BoShurik\MapperBundle\Tests\Generator\Fixtures\Post;
 use BoShurik\MapperBundle\Tests\Generator\Fixtures\PostModel;
 
-final class PostModelReverseMapping implements ReverseMappingInterface
+class PostModelReverseMapping implements ReverseMappingInterface
 {
     /**
      * @inheritDoc

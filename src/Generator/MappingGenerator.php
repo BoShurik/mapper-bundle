@@ -105,7 +105,6 @@ class MappingGenerator extends AbstractGenerator
         ]));
 
         $statements[] =  new Stmt\Class_($className->getLast(), [
-            'flags' => Stmt\Class_::MODIFIER_FINAL,
             'implements' => [new Name($interfaceClassName->getLast())],
             'stmts' => $classStmts,
         ]);

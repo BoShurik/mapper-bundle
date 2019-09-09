@@ -7,7 +7,7 @@ use BoShurik\MapperBundle\Mapper\Mapping\MappingInterface;
 use BoShurik\MapperBundle\Tests\Generator\Fixtures\Post;
 use BoShurik\MapperBundle\Tests\Generator\Fixtures\PostModel;
 
-final class PostModelMapping implements MappingInterface
+class PostModelMapping implements MappingInterface
 {
     /**
      * @inheritDoc
