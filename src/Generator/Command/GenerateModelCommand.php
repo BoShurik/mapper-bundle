@@ -80,5 +80,7 @@ class GenerateModelCommand extends AbstractCommand
                 interface_exists(ValidatorInterface::class)
             )
         );
+
+        return 0;
     }
 }

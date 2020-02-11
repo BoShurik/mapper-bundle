@@ -93,5 +93,7 @@ class GenerateMappingCommand extends AbstractCommand
                 $input->getOption('reverse')
             )
         );
+
+        return 0;
     }
 }
