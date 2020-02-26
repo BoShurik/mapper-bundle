@@ -11,11 +11,5 @@ use BoShurik\Mapper\MapperInterface;
 
 interface ReverseMappingInterface extends MappingInterface
 {
-    /**
-     * @param object $source
-     * @param MapperInterface $mapper
-     * @param array $context
-     * @return object
-     */
     public function reverseMap(object $source, MapperInterface $mapper, array $context): object;
 }
