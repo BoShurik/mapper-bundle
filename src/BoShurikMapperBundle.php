@@ -10,6 +10,7 @@ namespace BoShurik\MapperBundle;
 use BoShurik\MapperBundle\DependencyInjection\BoShurikMapperExtension;
 use BoShurik\MapperBundle\DependencyInjection\Compiler\MappingPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class BoShurikMapperBundle extends Bundle
@@ -27,7 +28,7 @@ class BoShurikMapperBundle extends Bundle
     /**
      * @inheritDoc
      */
-    public function getContainerExtension()
+    public function getContainerExtension(): ?ExtensionInterface
     {
         if (null === $this->extension) {
             $this->extension = new BoShurikMapperExtension();

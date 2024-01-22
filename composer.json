@@ -13,11 +13,11 @@
         "php": "^7.2 | ^8.0",
         "ext-json": "*",
         "boshurik/mapper": "^0.2",
-        "symfony/framework-bundle": "^4.0|^5.0"
+        "symfony/framework-bundle": "^4.0|^5.0|^6.0|^7.0"
     },
     "require-dev": {
         "nikic/php-parser": "^4.2",
-        "symfony/console": "^4.0|^5.0",
+        "symfony/console": "^4.0|^5.0|^6.0|^7.0",
         "phpunit/phpunit": "^8.0"
     },
     "suggest": {
